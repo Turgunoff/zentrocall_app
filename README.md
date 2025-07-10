@@ -22,34 +22,49 @@ Foydalanuvchilarga turli davlatlarning virtual raqamlarini harid qilish, ular or
 
 ---
 
-## 3. 🛠️ Texnologiyalar Steki
+## 3. 🛠️ Texnologiyalar va Arxitektura
 
 - **Platforma:** Flutter
-- **Arxitektura:** Feature-First (Funksiya bo'yicha)
-- **State Management:** BLoC (flutter_bloc)
+- **Arxitektura:** **Feature-First** (Har bir funksiya o'zining papkasida jamlanadi). Bu kodni modullarga ajratish va boshqarishni osonlashtiradi.
+- **State Management:** **BLoC** (flutter_bloc). Biznes mantiqini UI qismidan to'liq ajratish uchun. Oddiy holatlar uchun `Cubit` ishlatilishi mumkin.
 - **UI:** Material Design 3
-- **Network:** Dio
-- **Lokal Xotira:** SharedPreferences
-- **Asosiy Paketlar:** `equatable`, `google_fonts`, `iconsax_flutter`, `flutter_svg`, `intl`, `url_launcher`, `fluttertoast`.
+- **Network:** Dio (kengaytiriladigan va interceptor'larni qo'llab-quvvatlaydigan HTTP klient).
+- **Lokal Xotira:** SharedPreferences (oddiy sozlamalar uchun).
+- **Lokalizatsiya:** Flutter'ning o'zining `intl` paketi va `.arb` fayllari orqali.
 
 ---
 
 ## 4. 🗂️ Loyiha Tuzilmasi
 
-lib/  
-├── core/ # Umumiy kodlar (tema, konstantalar, vidjetlar)  
-├── data/ # Ma'lumotlar qatlami (modellar, repozitoriylar)  
-├── features/ # Ilovaning asosiy funksiyalari (har biri alohida papkada)  
-│ ├── auth/  
-│ ├── buy_number/  
-│ ├── call_history/  
-│ ├── chat/  
-│ ├── dashboard/  
-│ ├── dialer/  
-│ ├── settings/  
-│ └── ...  
-├── main.dart # Ilovaning kirish nuqtasi  
-└── routes.dart # Navigatsiya (routing)
+Quyida loyihaning standartlashtirilgan va kengaytirishga qulay papka tuzilmasi keltirilgan.
+
+lib/
+├── core/ # Butun ilova uchun umumiy kodlar
+│ ├── constants/ # O'zgarmas qiymatlar (ranglar, matn stillari, asset yo'llari)
+│ ├── theme/ # Yorug' (light) va qorong'u (dark) mavzular
+│ ├── utils/ # Yordamchi funksiyalar (masalan, sana formatlash, validatorlar)
+│ └── widgets/ # Qayta ishlatiladigan umumiy vidjetlar (masalan, CustomButton, LoadingIndicator)
+│
+├── data/ # Ma'lumotlar bilan ishlash qatlami
+│ ├── models/ # API'dan keladigan ma'lumotlar uchun modellar (UserModel, NumberModel)
+│ └── repositories/ # Ma'lumotlar manbalari (hozircha MOCK, keyinchalik API)
+│
+├── features/ # Ilovaning asosiy funksiyalari (har biri alohida modul)
+│ │
+│ └── auth/ # Masalan, Kirish / Ro'yxatdan o'tish funksiyasi
+│ ├── presentation/ # UI qatlami
+│ │ ├── bloc/ # AuthBloc, AuthState, AuthEvent
+│ │ ├── screens/ # LoginScreen, RegisterScreen
+│ │ └── widgets/ # Faqat shu funksiyaga tegishli maxsus vidjetlar
+│ └── ... # (domain, data qatlamlari shu yerda bo'lishi ham mumkin)
+│
+├── l10n/ # Lokalizatsiya fayllari
+│ ├── app_en.arb
+│ ├── app_ru.arb
+│ └── app_uz.arb
+│
+├── main.dart # Ilovaning asosiy kirish nuqtasi (runApp)
+└── routes.dart # Navigatsiya va sahifalararo o'tish (routing)
 
 ---
 
@@ -65,6 +80,7 @@ Loyihani quyidagi bosqichlarga bo'lib amalga oshirish tavsiya etiladi.
 - [ ] `core/theme/` papkasida `light` va `dark` temalarni sozlash.
 - [ ] Asosiy navigatsiya `Shell`ini (BottomNavigationBar bilan) yaratish.
 - [ ] `Splash Screen`ni tayyorlash.
+- [ ] Lokalizatsiya (`l10n`) uchun dastlabki sozlamalarni qilish.
 
 ### **Bosqich 1: Sozlamalar va Statik Sahifalar**
 
@@ -76,32 +92,32 @@ Loyihani quyidagi bosqichlarga bo'lib amalga oshirish tavsiya etiladi.
 
 Ushbu bosqichda barcha ma'lumotlar `data/repositories/` ichidagi soxta (mock) ma'lumotlar qaytaruvchi funksiyalardan olinadi.
 
-- [ ] **Raqam Sotib Olish:**
+- [ ] **Raqam Sotib Olish (`buy_number`):**
 
   - [ ] `VirtualNumberModel` yaratish.
   - [ ] `NumbersRepository` (soxta ma'lumotlar bilan) yaratish.
   - [ ] `BuyNumberBloc`, `State` va `Event`'larni yaratish.
   - [ ] "Buy Number" sahifasini `BlocBuilder` bilan BLoC holatlariga bog'lab chizish.
 
-- [ ] **Qo'ng'iroqlar Tarixi:**
+- [ ] **Qo'ng'iroqlar Tarixi (`call_history`):**
 
   - [ ] `CallLogModel` yaratish.
   - [ ] `CallHistoryRepository` (soxta tarix bilan) yaratish.
   - [ ] `CallHistoryBloc` yaratish.
   - [ ] "Call History" sahifasini UI'sini yaratish va BLoC'ga ulash.
 
-- [ ] **SMS va Suhbatlar:**
+- [ ] **SMS va Suhbatlar (`chat`):**
 
   - [ ] `SmsThreadModel` va `MessageModel` yaratish.
   - [ ] `SmsRepository` (soxta suhbatlar bilan) yaratish.
   - [ ] `SmsBloc` va `ChatBloc` yaratish.
   - [ ] "SMS Inbox" va "Chat" sahifalarini UI'sini yaratish va BLoC'larga ulash.
 
-- [ ] **Dialer Sahifasi:**
+- [ ] **Dialer Sahifasi (`dialer`):**
 
   - [ ] Faqat UI qismini yaratish. Qo'ng'iroq qilish funksiyasi keyingi bosqichda qo'shiladi.
 
-- [ ] **Asosiy Sahifa (Dashboard):**
+- [ ] **Asosiy Sahifa (`dashboard`):**
   - [ ] Turli BLoC'lardan ma'lumotlarni (balans, aktiv raqam, so'nggi qo'ng'iroqlar) olib ko'rsatadigan sahifani yaratish.
 
 ### **Bosqich 3: Backend Integratsiyasi**
