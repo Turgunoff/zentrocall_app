@@ -20,17 +20,29 @@ dependencies:
   # State management va util kutubxonalar
   flutter_bloc: ^9.1.1 # BLoC pattern uchun state management
   equatable: ^2.0.7 # Ob'ektlarni solishtirishni osonlashtiradi (BLoC uchun qulay)
+  hydrated_bloc: ^9.1.2 # BLoC/Cubit state'larini avtomatik lokal saqlash uchun
+  get_it: ^7.6.7 # Service locator pattern (dependency injection) uchun
 
   # Xalqaro tillar va lokalizatsiya
   intl: ^0.20.2 # Sana, vaqt va matnlarni lokalizatsiya qilish
+  flutter_localizations:
+    sdk: flutter # Flutter'ning o'zining lokalizatsiya SDK'si (ko'p tilli qo'llab-quvvatlash uchun)
 
   # Foydali util kutubxonalar
   url_launcher: ^6.3.1 # URL, telefon raqam, email ochish uchun
   fluttertoast: ^8.2.12 # Toast xabarlar ko‘rsatish uchun
+  package_info_plus: ^5.0.1 # Ilova versiyasi va meta ma'lumotlar uchun
 
   # Networking va lokal xotira
   dio: ^5.8.0+1 # HTTP so‘rovlar uchun (API bilan ishlash)
   shared_preferences: ^2.5.3 # Oddiy lokal ma'lumotlarni saqlash (token, sozlamalar va h.k.)
+
+  # Media va fayl ishlash
+  image_picker: ^1.0.7 # Profil rasmi yoki chat uchun rasm tanlash
+  file_picker: ^6.1.1 # Fayl yuborish yoki yuklab olish uchun
+
+  # Permissionlar
+  permission_handler: ^11.3.1 # Telefon funksiyalari uchun permission so‘rash
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +50,9 @@ dev_dependencies:
 
   flutter_lints: ^6.0.0 # Kod sifatini tekshiruvchi linterlar
   build_runner: ^2.5.4 # Kod generatsiyasi uchun (masalan, json_serializable)
+  json_serializable: ^6.7.1 # Model klasslar uchun avtomatik fromJson/toJson
+  flutter_native_splash: ^2.4.0 # Splash screen'ni sozlash va avtomatlashtirish uchun
+  flutter_launcher_icons: ^0.13.1 # Ilova ikonkasini avtomatik generatsiya qilish uchun
 
 flutter:
   uses-material-design: true # Material Design vidjetlarini ishlatish
