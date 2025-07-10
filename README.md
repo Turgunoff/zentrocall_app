@@ -83,9 +83,8 @@ lib/
 
 ## 5. 🗺️ Ishlab Chiqish Yo'l Xaritasi (Roadmap)
 
-Loyihani quyidagi bosqichlarga bo'lib amalga oshirish tavsiya etiladi.
-
-### **Bosqich 0: Poydevor (Foundation)**
+<details>
+<summary><b>Bosqich 0: Poydevor (Foundation)</b></summary>
 
 - [ ] `flutter create zentro_call` orqali loyihani yaratish.
 - [ ] `pubspec.yaml` fayliga barcha kerakli paketlarni qo'shish.
@@ -95,45 +94,44 @@ Loyihani quyidagi bosqichlarga bo'lib amalga oshirish tavsiya etiladi.
 - [ ] `Splash Screen`ni tayyorlash.
 - [ ] Lokalizatsiya (`l10n`) uchun dastlabki sozlamalarni qilish.
 
-### **Bosqich 1: Sozlamalar va Statik Sahifalar**
+</details>
+
+<details>
+<summary><b>Bosqich 1: Sozlamalar va Statik Sahifalar</b></summary>
 
 - [ ] **UI:** "Settings" sahifasini dizayn asosida yaratish ("Mundarija" uslubida).
 - [ ] **BLoC/Cubit:** `ThemeCubit` yaratish va `Switch` orqali temani o'zgartirish logikasini qo'shish.
 - [ ] **UI:** "About", "Help Center" kabi ichki statik sahifalarni yaratish.
 
-### **Bosqich 2: Asosiy Funksiyalar (Mock Data bilan)**
+</details>
 
-Ushbu bosqichda barcha ma'lumotlar `data/repositories/` ichidagi soxta (mock) ma'lumotlar qaytaruvchi funksiyalardan olinadi.
+<details>
+<summary><b>Bosqich 2: Asosiy Funksiyalar (Mock Data bilan)</b></summary>
 
 - [ ] **Raqam Sotib Olish (`buy_number`):**
-
   - [ ] `VirtualNumberModel` yaratish.
   - [ ] `NumbersRepository` (soxta ma'lumotlar bilan) yaratish.
   - [ ] `BuyNumberBloc`, `State` va `Event`'larni yaratish.
   - [ ] "Buy Number" sahifasini `BlocBuilder` bilan BLoC holatlariga bog'lab chizish.
-
 - [ ] **Qo'ng'iroqlar Tarixi (`call_history`):**
-
   - [ ] `CallLogModel` yaratish.
   - [ ] `CallHistoryRepository` (soxta tarix bilan) yaratish.
   - [ ] `CallHistoryBloc` yaratish.
   - [ ] "Call History" sahifasini UI'sini yaratish va BLoC'ga ulash.
-
 - [ ] **SMS va Suhbatlar (`chat`):**
-
   - [ ] `SmsThreadModel` va `MessageModel` yaratish.
   - [ ] `SmsRepository` (soxta suhbatlar bilan) yaratish.
   - [ ] `SmsBloc` va `ChatBloc` yaratish.
   - [ ] "SMS Inbox" va "Chat" sahifalarini UI'sini yaratish va BLoC'larga ulash.
-
 - [ ] **Dialer Sahifasi (`dialer`):**
-
   - [ ] Faqat UI qismini yaratish. Qo'ng'iroq qilish funksiyasi keyingi bosqichda qo'shiladi.
-
 - [ ] **Asosiy Sahifa (`dashboard`):**
   - [ ] Turli BLoC'lardan ma'lumotlarni (balans, aktiv raqam, so'nggi qo'ng'iroqlar) olib ko'rsatadigan sahifani yaratish.
 
-### **Bosqich 3: Backend Integratsiyasi**
+</details>
+
+<details>
+<summary><b>Bosqich 3: Backend Integratsiyasi</b></summary>
 
 - [ ] **Auth:** Foydalanuvchi registratsiyasi va kirish tizimini haqiqiy API bilan integratsiya qilish.
 - [ ] **Repository'larni Yangilash:** `data/repositories/` ichidagi barcha soxta ma'lumotlarni `dio` yordamida haqiqiy API chaqiruvlariga almashtirish.
@@ -142,9 +140,14 @@ Ushbu bosqichda barcha ma'lumotlar `data/repositories/` ichidagi soxta (mock) ma
   - [ ] VoIP qo'ng'iroqlarini amalga oshirish uchun SIP client kutubxonasini integratsiya qilish.
   - [ ] Chiquvchi va kiruvchi qo'ng'iroqlar logikasini yaratish.
 
-### **Bosqich 4: Yakuniy Bosqich va Testlash**
+</details>
+
+<details>
+<summary><b>Bosqich 4: Yakuniy Bosqich va Testlash</b></summary>
 
 - [ ] Ilovadagi barcha oqimlarni (flows) to'liq testdan o'tkazish.
 - [ ] UI'dagi mayda kamchiliklarni to'g'rilash va animatsiyalarni qo'shish.
 - [ ] Ilovani optimallashtirish (performance tuning).
 - [ ] Google Play Store uchun reliz versiyasini tayyorlash.
+
+</details>
