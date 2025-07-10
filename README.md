@@ -38,33 +38,46 @@ Foydalanuvchilarga turli davlatlarning virtual raqamlarini harid qilish, ular or
 
 Quyida loyihaning standartlashtirilgan va kengaytirishga qulay papka tuzilmasi keltirilgan.
 
+<details>
+<summary><b>lib/ papkasi tuzilmasi (bosish orqali ochiladi)</b></summary>
+
+```text
 lib/
-├── core/ # Butun ilova uchun umumiy kodlar
-│ ├── constants/ # O'zgarmas qiymatlar (ranglar, matn stillari, asset yo'llari)
-│ ├── theme/ # Yorug' (light) va qorong'u (dark) mavzular
-│ ├── utils/ # Yordamchi funksiyalar (masalan, sana formatlash, validatorlar)
-│ └── widgets/ # Qayta ishlatiladigan umumiy vidjetlar (masalan, CustomButton, LoadingIndicator)
+├── core/                # Umumiy kodlar (tema, konstantalar, util, umumiy vidjetlar)
+│   ├── constants/       # Ranglar, matnlar, asset yo‘llari va boshqalar
+│   ├── theme/           # Light/Dark mavzular va stil sozlamalari
+│   ├── utils/           # Yordamchi funksiyalar (masalan, sana formatlash)
+│   └── widgets/         # Qayta ishlatiladigan umumiy vidjetlar (CustomButton, LoadingIndicator)
 │
-├── data/ # Ma'lumotlar bilan ishlash qatlami
-│ ├── models/ # API'dan keladigan ma'lumotlar uchun modellar (UserModel, NumberModel)
-│ └── repositories/ # Ma'lumotlar manbalari (hozircha MOCK, keyinchalik API)
+├── data/                # Ma'lumotlar qatlami
+│   ├── models/          # API va lokal uchun modellar (UserModel, NumberModel)
+│   └── repositories/    # Repositorylar (mock yoki API)
 │
-├── features/ # Ilovaning asosiy funksiyalari (har biri alohida modul)
-│ │
-│ └── auth/ # Masalan, Kirish / Ro'yxatdan o'tish funksiyasi
-│ ├── presentation/ # UI qatlami
-│ │ ├── bloc/ # AuthBloc, AuthState, AuthEvent
-│ │ ├── screens/ # LoginScreen, RegisterScreen
-│ │ └── widgets/ # Faqat shu funksiyaga tegishli maxsus vidjetlar
-│ └── ... # (domain, data qatlamlari shu yerda bo'lishi ham mumkin)
+├── features/            # Asosiy funksiyalar (feature-based arxitektura)
+│   ├── auth/            # Kirish/ro‘yxatdan o‘tish
+│   │   ├── presentation/
+│   │   │   ├── bloc/        # AuthBloc, AuthState, AuthEvent
+│   │   │   ├── screens/     # LoginScreen, RegisterScreen
+│   │   │   └── widgets/     # Auth uchun maxsus vidjetlar
+│   │   └── ...              # (domain, data qatlamlari shu yerda bo‘lishi ham mumkin)
+│   ├── buy_number/      # Virtual raqam sotib olish
+│   ├── call_history/    # Qo‘ng‘iroqlar tarixi
+│   ├── chat/            # SMS va chat funksiyalari
+│   ├── dashboard/       # Asosiy sahifa (balans, statistikalar)
+│   ├── dialer/          # Telefon raqam terish interfeysi
+│   ├── settings/        # Sozlamalar sahifasi
+│   └── ...              # Yangi funksiyalar uchun joy
 │
-├── l10n/ # Lokalizatsiya fayllari
-│ ├── app_en.arb
-│ ├── app_ru.arb
-│ └── app_uz.arb
+├── l10n/                # Lokalizatsiya fayllari (.arb)
+│   ├── app_en.arb
+│   ├── app_ru.arb
+│   └── app_uz.arb
 │
-├── main.dart # Ilovaning asosiy kirish nuqtasi (runApp)
-└── routes.dart # Navigatsiya va sahifalararo o'tish (routing)
+├── main.dart            # Ilovaning asosiy kirish nuqtasi (runApp)
+└── routes.dart          # Navigatsiya va sahifalararo o‘tish (routing)
+```
+
+</details>
 
 ---
 
