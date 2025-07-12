@@ -34,7 +34,7 @@ class ZentroCallApp extends StatelessWidget {
       // ],
       // locale: const Locale('uz', 'UZ'), // Boshlang'ich til
       // Navigatsiya
-      initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.home,
       onGenerateRoute: AppRoutes.generateRoute,
 
       // BLoC Provider

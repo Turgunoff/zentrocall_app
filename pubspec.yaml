@@ -40,7 +40,7 @@ dependencies:
 
   # Media va fayl ishlash
   image_picker: ^1.0.7 # Profil rasmi yoki chat uchun rasm tanlash
-  file_picker: ^6.1.1 # Fayl yuborish yoki yuklab olish uchun
+#  file_picker: ^6.1.1 # Fayl yuborish yoki yuklab olish uchun
 
   # Permissionlar
   permission_handler: ^11.3.1 # Telefon funksiyalari uchun permission so‘rash
@@ -56,7 +56,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1 # Ilova ikonkasini avtomatik generatsiya qilish uchun
 
 dependency_overrides:
-  web: ^1.0.0
+  web: ^1.1.1
 
 flutter:
   uses-material-design: true # Material Design vidjetlarini ishlatish
