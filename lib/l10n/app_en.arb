@@ -1,0 +1,222 @@
+{
+  "@@locale": "en",
+  "appTitle": "ZentroCall",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  
+  "welcome": "Welcome",
+  "@welcome": {
+    "description": "Welcome message"
+  },
+  
+  "login": "Login",
+  "@login": {
+    "description": "Login button text"
+  },
+  
+  "register": "Register",
+  "@register": {
+    "description": "Register button text"
+  },
+  
+  "email": "Email",
+  "@email": {
+    "description": "Email field label"
+  },
+  
+  "password": "Password",
+  "@password": {
+    "description": "Password field label"
+  },
+  
+  "confirmPassword": "Confirm Password",
+  "@confirmPassword": {
+    "description": "Confirm password field label"
+  },
+  
+  "phoneNumber": "Phone Number",
+  "@phoneNumber": {
+    "description": "Phone number field label"
+  },
+  
+  "firstName": "First Name",
+  "@firstName": {
+    "description": "First name field label"
+  },
+  
+  "lastName": "Last Name",
+  "@lastName": {
+    "description": "Last name field label"
+  },
+  
+  "dashboard": "Dashboard",
+  "@dashboard": {
+    "description": "Dashboard tab title"
+  },
+  
+  "buyNumber": "Buy Number",
+  "@buyNumber": {
+    "description": "Buy number tab title"
+  },
+  
+  "callHistory": "Call History",
+  "@callHistory": {
+    "description": "Call history tab title"
+  },
+  
+  "chat": "Chat",
+  "@chat": {
+    "description": "Chat tab title"
+  },
+  
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings tab title"
+  },
+  
+  "balance": "Balance",
+  "@balance": {
+    "description": "Balance label"
+  },
+  
+  "virtualNumbers": "Virtual Numbers",
+  "@virtualNumbers": {
+    "description": "Virtual numbers label"
+  },
+  
+  "recentCalls": "Recent Calls",
+  "@recentCalls": {
+    "description": "Recent calls label"
+  },
+  
+  "theme": "Theme",
+  "@theme": {
+    "description": "Theme setting label"
+  },
+  
+  "language": "Language",
+  "@language": {
+    "description": "Language setting label"
+  },
+  
+  "about": "About",
+  "@about": {
+    "description": "About section label"
+  },
+  
+  "help": "Help",
+  "@help": {
+    "description": "Help section label"
+  },
+  
+  "logout": "Logout",
+  "@logout": {
+    "description": "Logout button text"
+  },
+  
+  "error": "Error",
+  "@error": {
+    "description": "Error message label"
+  },
+  
+  "success": "Success",
+  "@success": {
+    "description": "Success message label"
+  },
+  
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Loading message"
+  },
+  
+  "noData": "No data available",
+  "@noData": {
+    "description": "No data message"
+  },
+  
+  "retry": "Retry",
+  "@retry": {
+    "description": "Retry button text"
+  },
+  
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+  
+  "save": "Save",
+  "@save": {
+    "description": "Save button text"
+  },
+  
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button text"
+  },
+  
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit button text"
+  },
+  
+  "search": "Search",
+  "@search": {
+    "description": "Search placeholder"
+  },
+  
+  "filter": "Filter",
+  "@filter": {
+    "description": "Filter button text"
+  },
+  
+  "sort": "Sort",
+  "@sort": {
+    "description": "Sort button text"
+  },
+  
+  "refresh": "Refresh",
+  "@refresh": {
+    "description": "Refresh button text"
+  },
+  
+  "back": "Back",
+  "@back": {
+    "description": "Back button text"
+  },
+  
+  "next": "Next",
+  "@next": {
+    "description": "Next button text"
+  },
+  
+  "previous": "Previous",
+  "@previous": {
+    "description": "Previous button text"
+  },
+  
+  "done": "Done",
+  "@done": {
+    "description": "Done button text"
+  },
+  
+  "close": "Close",
+  "@close": {
+    "description": "Close button text"
+  },
+  
+  "ok": "OK",
+  "@ok": {
+    "description": "OK button text"
+  },
+  
+  "yes": "Yes",
+  "@yes": {
+    "description": "Yes button text"
+  },
+  
+  "no": "No",
+  "@no": {
+    "description": "No button text"
+  }
+} 

@@ -1,0 +1,222 @@
+{
+  "@@locale": "uz",
+  "appTitle": "ZentroCall",
+  "@appTitle": {
+    "description": "Ilovaning nomi"
+  },
+  
+  "welcome": "Xush kelibsiz",
+  "@welcome": {
+    "description": "Xush kelish xabari"
+  },
+  
+  "login": "Kirish",
+  "@login": {
+    "description": "Kirish tugmasi matni"
+  },
+  
+  "register": "Ro'yxatdan o'tish",
+  "@register": {
+    "description": "Ro'yxatdan o'tish tugmasi matni"
+  },
+  
+  "email": "Email",
+  "@email": {
+    "description": "Email maydoni yorlig'i"
+  },
+  
+  "password": "Parol",
+  "@password": {
+    "description": "Parol maydoni yorlig'i"
+  },
+  
+  "confirmPassword": "Parolni tasdiqlang",
+  "@confirmPassword": {
+    "description": "Parolni tasdiqlash maydoni yorlig'i"
+  },
+  
+  "phoneNumber": "Telefon raqami",
+  "@phoneNumber": {
+    "description": "Telefon raqami maydoni yorlig'i"
+  },
+  
+  "firstName": "Ism",
+  "@firstName": {
+    "description": "Ism maydoni yorlig'i"
+  },
+  
+  "lastName": "Familiya",
+  "@lastName": {
+    "description": "Familiya maydoni yorlig'i"
+  },
+  
+  "dashboard": "Bosh sahifa",
+  "@dashboard": {
+    "description": "Bosh sahifa tab nomi"
+  },
+  
+  "buyNumber": "Raqam sotib olish",
+  "@buyNumber": {
+    "description": "Raqam sotib olish tab nomi"
+  },
+  
+  "callHistory": "Qo'ng'iroqlar tarixi",
+  "@callHistory": {
+    "description": "Qo'ng'iroqlar tarixi tab nomi"
+  },
+  
+  "chat": "Chat",
+  "@chat": {
+    "description": "Chat tab nomi"
+  },
+  
+  "settings": "Sozlamalar",
+  "@settings": {
+    "description": "Sozlamalar tab nomi"
+  },
+  
+  "balance": "Balans",
+  "@balance": {
+    "description": "Balans yorlig'i"
+  },
+  
+  "virtualNumbers": "Virtual raqamlar",
+  "@virtualNumbers": {
+    "description": "Virtual raqamlar yorlig'i"
+  },
+  
+  "recentCalls": "So'nggi qo'ng'iroqlar",
+  "@recentCalls": {
+    "description": "So'nggi qo'ng'iroqlar yorlig'i"
+  },
+  
+  "theme": "Mavzu",
+  "@theme": {
+    "description": "Mavzu sozlash yorlig'i"
+  },
+  
+  "language": "Til",
+  "@language": {
+    "description": "Til sozlash yorlig'i"
+  },
+  
+  "about": "Haqida",
+  "@about": {
+    "description": "Haqida bo'limi yorlig'i"
+  },
+  
+  "help": "Yordam",
+  "@help": {
+    "description": "Yordam bo'limi yorlig'i"
+  },
+  
+  "logout": "Chiqish",
+  "@logout": {
+    "description": "Chiqish tugmasi matni"
+  },
+  
+  "error": "Xatolik",
+  "@error": {
+    "description": "Xatolik xabari yorlig'i"
+  },
+  
+  "success": "Muvaffaqiyatli",
+  "@success": {
+    "description": "Muvaffaqiyatli xabar yorlig'i"
+  },
+  
+  "loading": "Yuklanmoqda...",
+  "@loading": {
+    "description": "Yuklash xabari"
+  },
+  
+  "noData": "Ma'lumot mavjud emas",
+  "@noData": {
+    "description": "Ma'lumot yo'q xabari"
+  },
+  
+  "retry": "Qayta urinish",
+  "@retry": {
+    "description": "Qayta urinish tugmasi matni"
+  },
+  
+  "cancel": "Bekor qilish",
+  "@cancel": {
+    "description": "Bekor qilish tugmasi matni"
+  },
+  
+  "save": "Saqlash",
+  "@save": {
+    "description": "Saqlash tugmasi matni"
+  },
+  
+  "delete": "O'chirish",
+  "@delete": {
+    "description": "O'chirish tugmasi matni"
+  },
+  
+  "edit": "Tahrirlash",
+  "@edit": {
+    "description": "Tahrirlash tugmasi matni"
+  },
+  
+  "search": "Qidirish",
+  "@search": {
+    "description": "Qidirish placeholder"
+  },
+  
+  "filter": "Filtrlash",
+  "@filter": {
+    "description": "Filtrlash tugmasi matni"
+  },
+  
+  "sort": "Saralash",
+  "@sort": {
+    "description": "Saralash tugmasi matni"
+  },
+  
+  "refresh": "Yangilash",
+  "@refresh": {
+    "description": "Yangilash tugmasi matni"
+  },
+  
+  "back": "Orqaga",
+  "@back": {
+    "description": "Orqaga tugmasi matni"
+  },
+  
+  "next": "Keyingi",
+  "@next": {
+    "description": "Keyingi tugmasi matni"
+  },
+  
+  "previous": "Oldingi",
+  "@previous": {
+    "description": "Oldingi tugmasi matni"
+  },
+  
+  "done": "Tayyor",
+  "@done": {
+    "description": "Tayyor tugmasi matni"
+  },
+  
+  "close": "Yopish",
+  "@close": {
+    "description": "Yopish tugmasi matni"
+  },
+  
+  "ok": "OK",
+  "@ok": {
+    "description": "OK tugmasi matni"
+  },
+  
+  "yes": "Ha",
+  "@yes": {
+    "description": "Ha tugmasi matni"
+  },
+  
+  "no": "Yo'q",
+  "@no": {
+    "description": "Yo'q tugmasi matni"
+  }
+} 

@@ -18,9 +18,10 @@ dependencies:
   flutter_svg: ^2.2.0 # SVG formatdagi rasmlarni ko‘rsatish
 
   # State management va util kutubxonalar
-  flutter_bloc: ^9.1.1 # BLoC pattern uchun state management
+  flutter_bloc: ^9.1.1
+  bloc: ^9.0.0
   equatable: ^2.0.7 # Ob'ektlarni solishtirishni osonlashtiradi (BLoC uchun qulay)
-  hydrated_bloc: ^9.1.2 # BLoC/Cubit state'larini avtomatik lokal saqlash uchun
+  hydrated_bloc: ^10.0.0 # BLoC/Cubit state'larini avtomatik lokal saqlash uchun
   get_it: ^7.6.7 # Service locator pattern (dependency injection) uchun
 
   # Xalqaro tillar va lokalizatsiya
@@ -53,6 +54,9 @@ dev_dependencies:
   json_serializable: ^6.7.1 # Model klasslar uchun avtomatik fromJson/toJson
   flutter_native_splash: ^2.4.0 # Splash screen'ni sozlash va avtomatlashtirish uchun
   flutter_launcher_icons: ^0.13.1 # Ilova ikonkasini avtomatik generatsiya qilish uchun
+
+dependency_overrides:
+  web: ^1.0.0
 
 flutter:
   uses-material-design: true # Material Design vidjetlarini ishlatish

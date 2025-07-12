@@ -1,0 +1,222 @@
+{
+  "@@locale": "ru",
+  "appTitle": "ZentroCall",
+  "@appTitle": {
+    "description": "Название приложения"
+  },
+  
+  "welcome": "Добро пожаловать",
+  "@welcome": {
+    "description": "Приветственное сообщение"
+  },
+  
+  "login": "Войти",
+  "@login": {
+    "description": "Текст кнопки входа"
+  },
+  
+  "register": "Регистрация",
+  "@register": {
+    "description": "Текст кнопки регистрации"
+  },
+  
+  "email": "Email",
+  "@email": {
+    "description": "Метка поля email"
+  },
+  
+  "password": "Пароль",
+  "@password": {
+    "description": "Метка поля пароля"
+  },
+  
+  "confirmPassword": "Подтвердите пароль",
+  "@confirmPassword": {
+    "description": "Метка поля подтверждения пароля"
+  },
+  
+  "phoneNumber": "Номер телефона",
+  "@phoneNumber": {
+    "description": "Метка поля номера телефона"
+  },
+  
+  "firstName": "Имя",
+  "@firstName": {
+    "description": "Метка поля имени"
+  },
+  
+  "lastName": "Фамилия",
+  "@lastName": {
+    "description": "Метка поля фамилии"
+  },
+  
+  "dashboard": "Главная",
+  "@dashboard": {
+    "description": "Название вкладки главной страницы"
+  },
+  
+  "buyNumber": "Купить номер",
+  "@buyNumber": {
+    "description": "Название вкладки покупки номера"
+  },
+  
+  "callHistory": "История звонков",
+  "@callHistory": {
+    "description": "Название вкладки истории звонков"
+  },
+  
+  "chat": "Чат",
+  "@chat": {
+    "description": "Название вкладки чата"
+  },
+  
+  "settings": "Настройки",
+  "@settings": {
+    "description": "Название вкладки настроек"
+  },
+  
+  "balance": "Баланс",
+  "@balance": {
+    "description": "Метка баланса"
+  },
+  
+  "virtualNumbers": "Виртуальные номера",
+  "@virtualNumbers": {
+    "description": "Метка виртуальных номеров"
+  },
+  
+  "recentCalls": "Последние звонки",
+  "@recentCalls": {
+    "description": "Метка последних звонков"
+  },
+  
+  "theme": "Тема",
+  "@theme": {
+    "description": "Метка настройки темы"
+  },
+  
+  "language": "Язык",
+  "@language": {
+    "description": "Метка настройки языка"
+  },
+  
+  "about": "О приложении",
+  "@about": {
+    "description": "Метка раздела о приложении"
+  },
+  
+  "help": "Помощь",
+  "@help": {
+    "description": "Метка раздела помощи"
+  },
+  
+  "logout": "Выйти",
+  "@logout": {
+    "description": "Текст кнопки выхода"
+  },
+  
+  "error": "Ошибка",
+  "@error": {
+    "description": "Метка сообщения об ошибке"
+  },
+  
+  "success": "Успешно",
+  "@success": {
+    "description": "Метка сообщения об успехе"
+  },
+  
+  "loading": "Загрузка...",
+  "@loading": {
+    "description": "Сообщение загрузки"
+  },
+  
+  "noData": "Данные отсутствуют",
+  "@noData": {
+    "description": "Сообщение об отсутствии данных"
+  },
+  
+  "retry": "Повторить",
+  "@retry": {
+    "description": "Текст кнопки повтора"
+  },
+  
+  "cancel": "Отмена",
+  "@cancel": {
+    "description": "Текст кнопки отмены"
+  },
+  
+  "save": "Сохранить",
+  "@save": {
+    "description": "Текст кнопки сохранения"
+  },
+  
+  "delete": "Удалить",
+  "@delete": {
+    "description": "Текст кнопки удаления"
+  },
+  
+  "edit": "Редактировать",
+  "@edit": {
+    "description": "Текст кнопки редактирования"
+  },
+  
+  "search": "Поиск",
+  "@search": {
+    "description": "Placeholder поиска"
+  },
+  
+  "filter": "Фильтр",
+  "@filter": {
+    "description": "Текст кнопки фильтра"
+  },
+  
+  "sort": "Сортировка",
+  "@sort": {
+    "description": "Текст кнопки сортировки"
+  },
+  
+  "refresh": "Обновить",
+  "@refresh": {
+    "description": "Текст кнопки обновления"
+  },
+  
+  "back": "Назад",
+  "@back": {
+    "description": "Текст кнопки назад"
+  },
+  
+  "next": "Далее",
+  "@next": {
+    "description": "Текст кнопки далее"
+  },
+  
+  "previous": "Предыдущий",
+  "@previous": {
+    "description": "Текст кнопки предыдущий"
+  },
+  
+  "done": "Готово",
+  "@done": {
+    "description": "Текст кнопки готово"
+  },
+  
+  "close": "Закрыть",
+  "@close": {
+    "description": "Текст кнопки закрыть"
+  },
+  
+  "ok": "OK",
+  "@ok": {
+    "description": "Текст кнопки OK"
+  },
+  
+  "yes": "Да",
+  "@yes": {
+    "description": "Текст кнопки да"
+  },
+  
+  "no": "Нет",
+  "@no": {
+    "description": "Текст кнопки нет"
+  }
+} 
