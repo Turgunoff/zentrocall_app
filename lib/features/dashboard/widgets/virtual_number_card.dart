@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zentrocall_app/core/constants/app_colors.dart';
 
 class VirtualNumberCard extends StatelessWidget {
   final String countryFlag;
@@ -23,11 +24,7 @@ class VirtualNumberCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        gradient: const LinearGradient(
-          colors: [Color(0xFF2196F3), Color(0xFF1976D2)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        gradient: AppColors.primaryGradient,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

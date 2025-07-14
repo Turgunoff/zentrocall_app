@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:zentrocall_app/core/widgets/virtual_number_card.dart';
-import 'package:zentrocall_app/core/widgets/balance_card.dart';
-import 'package:zentrocall_app/core/widgets/dashboard_action_button.dart';
-import 'package:zentrocall_app/core/widgets/recent_activity_item.dart';
+import 'package:zentrocall_app/features/dashboard/widgets/virtual_number_card.dart';
+import 'package:zentrocall_app/features/dashboard/widgets/balance_card.dart';
+import 'package:zentrocall_app/features/dashboard/widgets/dashboard_action_button.dart';
+import 'package:zentrocall_app/features/dashboard/widgets/recent_activity_item.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -53,10 +53,13 @@ class DashboardScreen extends StatelessWidget {
           const SizedBox(width: 8),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      body: RefreshIndicator(
+        onRefresh: () async {
+          // TODO: Ma'lumotlarni yangilash funksiyasini shu yerga yozing
+          await Future.delayed(const Duration(seconds: 1));
+        },
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           children: [
             // Virtual Number Card
             VirtualNumberCard(
@@ -74,7 +77,7 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: DashboardActionButton(
-                    icon: Icons.add_ic_call_rounded,
+                    icon: Iconsax.add_circle,
                     label: 'Buy Number',
                     onTap: () {},
                   ),
@@ -82,7 +85,7 @@ class DashboardScreen extends StatelessWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: DashboardActionButton(
-                    icon: Icons.dialpad_rounded,
+                    icon: Iconsax.call,
                     label: 'Make Call',
                     onTap: () {},
                   ),
@@ -94,7 +97,7 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: DashboardActionButton(
-                    icon: Icons.mail_outline_rounded,
+                    icon: Iconsax.sms,
                     label: 'Send SMS',
                     onTap: () {},
                   ),
@@ -117,15 +120,15 @@ class DashboardScreen extends StatelessWidget {
             const SizedBox(height: 8),
             // Recent Activity List
             RecentActivityItem(
-              icon: Icons.call,
+              icon: Iconsax.call,
               title: '+1 555 987 6543',
               subtitle: 'Today, 2:30 PM',
-              trailing: '5:23',
+              trailing: '5:23 min.',
               isSms: false,
               onTap: () {},
             ),
             RecentActivityItem(
-              icon: Icons.mail_outline_rounded,
+              icon: Iconsax.sms,
               title: '+1 555 234 5678',
               subtitle: 'Today, 11:45 AM',
               trailing: 'Delivered',
@@ -133,10 +136,10 @@ class DashboardScreen extends StatelessWidget {
               onTap: () {},
             ),
             RecentActivityItem(
-              icon: Icons.call,
+              icon: Iconsax.call,
               title: '+1 555 876 5432',
               subtitle: 'Yesterday, 4:15 PM',
-              trailing: '2:45',
+              trailing: '2:45 min.',
               isSms: false,
               onTap: () {},
             ),

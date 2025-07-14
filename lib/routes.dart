@@ -5,6 +5,7 @@ import 'package:zentrocall_app/features/dashboard/presentation/screens/dashboard
 import 'package:zentrocall_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:zentrocall_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zentrocall_app/features/settings/presentation/screens/settings_screen.dart';
 
 /// Ilova uchun navigatsiya va marshrutizatsiya
 class AppRoutes {
@@ -128,7 +129,6 @@ class _HomeScreenState extends State<HomeScreen> {
     const DashboardScreen(),
     const BuyNumberScreen(),
     const CallHistoryScreen(),
-    const ChatScreen(),
     const SettingsScreen(),
   ];
 
@@ -187,13 +187,6 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       const Scaffold(body: Center(child: Text('Chat Screen')));
-}
-
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Settings Screen')));
 }
 
 class AboutScreen extends StatelessWidget {

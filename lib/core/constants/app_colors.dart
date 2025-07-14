@@ -17,6 +17,8 @@ class AppColors {
   static const Color success = Color(0xFF4CAF50); // Yashil
   static const Color info = primary; // Asosiy ko'k
 
+  static const Color dashboardActionBg = Color(0xFFEFF6FF);
+
   // Yorug' tema ranglari
   static const Color lightBackground = Color(0xFFFAFAFA);
   static const Color lightSurface = Color(0xFFFFFFFF);

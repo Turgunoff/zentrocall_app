@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zentrocall_app/core/constants/app_colors.dart';
 
 class DashboardActionButton extends StatelessWidget {
   final IconData icon;
@@ -15,7 +16,7 @@ class DashboardActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: const Color(0xFFEFF6FF), // Card rangi #EFF6FF
+      color: Colors.white,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -25,16 +26,16 @@ class DashboardActionButton extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            // shadow yo'q
+            color: AppColors.dashboardActionBg,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 32, color: const Color(0xFF1976D2)),
+              Icon(icon, size: 32, color: AppColors.primary),
               const SizedBox(height: 8),
               Text(
                 label,
-                style: const TextStyle(fontSize: 15, color: Color(0xFF1976D2)),
+                style: const TextStyle(fontSize: 15, color: AppColors.primary),
               ),
             ],
           ),

@@ -23,9 +23,9 @@ class RecentActivityItem extends StatelessWidget {
     return ListTile(
       leading: CircleAvatar(
         backgroundColor: isSms
-            ? const Color(0xFF1976D2).withOpacity(0.1)
-            : const Color(0xFF1976D2).withOpacity(0.15),
-        child: Icon(icon, color: const Color(0xFF1976D2)),
+            ? const Color(0xFF2563EB).withOpacity(0.1)
+            : const Color(0xFF2563EB).withOpacity(0.15),
+        child: Icon(icon, color: const Color(0xFF2563EB)),
       ),
       title: Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
       subtitle: Text(subtitle, style: const TextStyle(fontSize: 13)),
