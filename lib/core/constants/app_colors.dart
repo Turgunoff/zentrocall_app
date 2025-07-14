@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 /// Ilova uchun ranglar konstantalari
 class AppColors {
   // Asosiy ranglar
-  static const Color primary = Color(0xFF2196F3); // Ko'k
-  static const Color primaryDark = Color(0xFF1976D2);
-  static const Color primaryLight = Color(0xFFBBDEFB);
+  static const Color primary = Color(0xFF2563EB); // ZentroCall Primary (ko'k)
+  static const Color primaryDark = Color(0xFF1E40AF); // Qorong'u ko'k
+  static const Color primaryLight = Color(0xFF60A5FA); // Yorug' ko'k
 
   static const Color secondary = Color(0xFF4CAF50); // Yashil
   static const Color secondaryDark = Color(0xFF388E3C);
@@ -15,7 +15,7 @@ class AppColors {
   static const Color error = Color(0xFFF44336); // Qizil
   static const Color warning = Color(0xFFFF9800); // To'q sariq
   static const Color success = Color(0xFF4CAF50); // Yashil
-  static const Color info = Color(0xFF2196F3); // Ko'k
+  static const Color info = primary; // Asosiy ko'k
 
   // Yorug' tema ranglari
   static const Color lightBackground = Color(0xFFFAFAFA);

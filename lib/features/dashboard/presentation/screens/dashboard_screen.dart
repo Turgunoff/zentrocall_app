@@ -11,9 +11,11 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
         centerTitle: true,
         automaticallyImplyLeading: false,
         leadingWidth: 120,
