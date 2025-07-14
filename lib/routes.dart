@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:zentrocall_app/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:zentrocall_app/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:zentrocall_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Ilova uchun navigatsiya va marshrutizatsiya
 class AppRoutes {
@@ -23,7 +28,9 @@ class AppRoutes {
 
     if (name == splash) {
       return MaterialPageRoute(builder: (_) => const SplashScreen());
-    } else if (name == login) {
+    } else if (name == '/onboarding') {
+      return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+    } else if (name == '/login') {
       return MaterialPageRoute(builder: (_) => const LoginScreen());
     } else if (name == register) {
       return MaterialPageRoute(builder: (_) => const RegisterScreen());
@@ -60,8 +67,30 @@ class AppRoutes {
 }
 
 /// Splash Screen
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _navigate();
+  }
+
+  Future<void> _navigate() async {
+    await Future.delayed(const Duration(seconds: 2));
+    final prefs = await SharedPreferences.getInstance();
+    final seenOnboarding = prefs.getBool('seen_onboarding') ?? false;
+    if (seenOnboarding) {
+      Navigator.of(context).pushReplacementNamed('/login');
+    } else {
+      Navigator.of(context).pushReplacementNamed('/onboarding');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,22 +145,15 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         items: const [
+          BottomNavigationBarItem(icon: Icon(Iconsax.home_2), label: 'Home'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: 'Bosh sahifa',
+            icon: Icon(Iconsax.category),
+            label: 'Numbers',
           ),
+          BottomNavigationBarItem(icon: Icon(Iconsax.call), label: 'Calls'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.phone),
-            label: 'Raqam sotib olish',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'Qo\'ng\'iroqlar tarixi',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Sozlamalar',
+            icon: Icon(Iconsax.setting),
+            label: 'Settings',
           ),
         ],
       ),
@@ -139,26 +161,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// Placeholder sahifalar (keyinchalik to'ldiriladi)
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Login Screen')));
-}
-
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
   @override
   Widget build(BuildContext context) =>
       const Scaffold(body: Center(child: Text('Register Screen')));
-}
-
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Dashboard Screen')));
 }
 
 class BuyNumberScreen extends StatelessWidget {

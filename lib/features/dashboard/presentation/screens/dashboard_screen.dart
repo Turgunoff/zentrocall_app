@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:zentrocall_app/core/widgets/virtual_number_card.dart';
 import 'package:zentrocall_app/core/widgets/balance_card.dart';
 import 'package:zentrocall_app/core/widgets/dashboard_action_button.dart';
@@ -9,55 +10,52 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 1,
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        leadingWidth: 120,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 20,
+                backgroundImage: NetworkImage(
+                  'https://randomuser.me/api/portraits/men/32.jpg',
+                ),
+                backgroundColor: Colors.white,
+              ),
+            ],
+          ),
+        ),
+        title: const Text(
+          'ZentroCall',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              // TODO: bildirishnoma sahifasiga yo‘naltirish
+            },
+            icon: const Icon(Iconsax.notification),
+            tooltip: 'Bildirishnomalar',
+            color: Colors.black54,
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // AppBar (profil, title, notification)
-            Row(
-              children: [
-                const CircleAvatar(
-                  radius: 22,
-                  backgroundImage: NetworkImage(
-                    'https://randomuser.me/api/portraits/men/32.jpg',
-                  ),
-                ),
-                const SizedBox(width: 12),
-                const Expanded(
-                  child: Text(
-                    'VirtualNum',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Stack(
-                  children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.notifications_none_rounded,
-                        size: 28,
-                      ),
-                      onPressed: () {},
-                    ),
-                    Positioned(
-                      right: 8,
-                      top: 10,
-                      child: Container(
-                        width: 10,
-                        height: 10,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
             // Virtual Number Card
             VirtualNumberCard(
               countryFlag: '🇺🇸',

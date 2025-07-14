@@ -15,7 +15,7 @@ class DashboardActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: const Color(0xFFEFF6FF), // Card rangi #EFF6FF
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -25,13 +25,7 @@ class DashboardActionButton extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.03),
-                blurRadius: 6,
-                offset: const Offset(0, 2),
-              ),
-            ],
+            // shadow yo'q
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -40,11 +34,7 @@ class DashboardActionButton extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 label,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 15,
-                  color: Color(0xFF1976D2),
-                ),
+                style: const TextStyle(fontSize: 15, color: Color(0xFF1976D2)),
               ),
             ],
           ),
