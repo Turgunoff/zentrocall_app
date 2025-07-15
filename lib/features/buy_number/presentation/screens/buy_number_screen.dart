@@ -300,10 +300,8 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
         title: const Text('Buy Number'),
         centerTitle: true,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
-          onPressed: () => Navigator.pop(context),
-        ),
+        surfaceTintColor: Colors.transparent,
+        backgroundColor: Colors.white,
         actions: [
           IconButton(
             icon: const Icon(Icons.filter_list_rounded),
