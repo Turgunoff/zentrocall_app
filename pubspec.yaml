@@ -40,11 +40,12 @@ dependencies:
 
   # Media va fayl ishlash
   image_picker: ^1.0.7 # Profil rasmi yoki chat uchun rasm tanlash
-#  file_picker: ^6.1.1 # Fayl yuborish yoki yuklab olish uchun
+  #  file_picker: ^6.1.1 # Fayl yuborish yoki yuklab olish uchun
 
   # Permissionlar
   permission_handler: ^11.3.1 # Telefon funksiyalari uchun permission so‘rash
   iconsax: ^0.0.8
+  country_flags: ^3.3.0
 
 dev_dependencies:
   flutter_test:

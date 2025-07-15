@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:zentrocall_app/features/buy_number/presentation/screens/buy_number_screen.dart';
 import 'package:zentrocall_app/features/calls/presentation/screens/calls_screen.dart';
 import 'package:zentrocall_app/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:zentrocall_app/features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -166,13 +167,6 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       const Scaffold(body: Center(child: Text('Register Screen')));
-}
-
-class BuyNumberScreen extends StatelessWidget {
-  const BuyNumberScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Buy Number Screen')));
 }
 
 class ChatScreen extends StatelessWidget {

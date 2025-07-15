@@ -18,13 +18,7 @@ class SettingsScreen extends StatelessWidget {
         elevation: 0,
         surfaceTintColor: Colors.transparent,
         centerTitle: true,
-        title: Text(
-          'Settings',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.w600,
-            fontSize: 18,
-          ),
-        ),
+        title: Text('Settings'),
         iconTheme: Theme.of(context).iconTheme,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
