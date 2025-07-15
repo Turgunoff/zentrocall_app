@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:zentrocall_app/features/calls/presentation/screens/calls_screen.dart';
 import 'package:zentrocall_app/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:zentrocall_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:zentrocall_app/features/auth/presentation/screens/login_screen.dart';
@@ -16,7 +16,7 @@ class AppRoutes {
   static const String home = '/home';
   static const String dashboard = '/dashboard';
   static const String buyNumber = '/buy-number';
-  static const String callHistory = '/call-history';
+  static const String calls = '/calls';
   static const String chat = '/chat';
   static const String settings = '/settings';
   static const String about = '/about';
@@ -41,8 +41,8 @@ class AppRoutes {
       return MaterialPageRoute(builder: (_) => const DashboardScreen());
     } else if (name == buyNumber) {
       return MaterialPageRoute(builder: (_) => const BuyNumberScreen());
-    } else if (name == callHistory) {
-      return MaterialPageRoute(builder: (_) => const CallHistoryScreen());
+    } else if (name == calls) {
+      return MaterialPageRoute(builder: (_) => const CallsScreen());
     } else if (name == chat) {
       return MaterialPageRoute(builder: (_) => const ChatScreen());
     } else if (name == settings) {
@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _screens = [
     const DashboardScreen(),
     const BuyNumberScreen(),
-    const CallHistoryScreen(),
+    const CallsScreen(),
     const SettingsScreen(),
   ];
 
@@ -173,13 +173,6 @@ class BuyNumberScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       const Scaffold(body: Center(child: Text('Buy Number Screen')));
-}
-
-class CallHistoryScreen extends StatelessWidget {
-  const CallHistoryScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Call History Screen')));
 }
 
 class ChatScreen extends StatelessWidget {

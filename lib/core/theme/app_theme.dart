@@ -22,10 +22,11 @@ class AppTheme {
       scaffoldBackgroundColor: AppColors.lightBackground, // Ensure scaffold bg
       textTheme: GoogleFonts.interTextTheme(),
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.lightSurface,
+        backgroundColor: AppColors.lightBackground,
         foregroundColor: AppColors.lightOnSurface,
         elevation: 0,
         centerTitle: true,
+        surfaceTintColor: Colors.transparent,
       ),
       cardTheme: const CardThemeData(
         color: AppColors.lightSurface,

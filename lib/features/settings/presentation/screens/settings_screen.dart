@@ -112,6 +112,14 @@ class SettingsScreen extends StatelessWidget {
                 trailing: BlocBuilder<ThemeCubit, ThemeMode>(
                   builder: (context, themeMode) {
                     return Switch(
+                      activeColor: Theme.of(context).colorScheme.primary,
+                      inactiveThumbColor: Colors.white,
+                      activeTrackColor: Colors.grey.shade300,
+                      inactiveTrackColor: Colors.grey.shade300,
+                      trackOutlineColor: WidgetStateProperty.all(
+                        Colors.grey.shade300,
+                      ),
+
                       value: themeMode == ThemeMode.dark,
                       onChanged: (v) {
                         context.read<ThemeCubit>().toggleTheme();
@@ -126,7 +134,16 @@ class SettingsScreen extends StatelessWidget {
               _SettingsTile(
                 icon: Iconsax.notification,
                 title: 'Notifications',
-                trailing: _InteractiveSwitch(initialValue: true),
+                trailing: _InteractiveSwitch(
+                  initialValue: true,
+                  activeColor: Theme.of(context).colorScheme.primary,
+                  inactiveThumbColor: Colors.white,
+                  activeTrackColor: Colors.grey.shade300,
+                  inactiveTrackColor: Colors.grey.shade300,
+                  trackOutlineColor: WidgetStateProperty.all(
+                    Colors.grey.shade300,
+                  ),
+                ),
                 showRightIcon: false,
                 onTap: null,
               ),
@@ -165,7 +182,16 @@ class SettingsScreen extends StatelessWidget {
               _SettingsTile(
                 icon: Iconsax.shield_tick,
                 title: 'Two-factor Authentication',
-                trailing: _InteractiveSwitch(initialValue: false),
+                trailing: _InteractiveSwitch(
+                  initialValue: false,
+                  activeColor: Theme.of(context).colorScheme.primary,
+                  inactiveThumbColor: Colors.white,
+                  activeTrackColor: Colors.grey.shade300,
+                  inactiveTrackColor: Colors.grey.shade300,
+                  trackOutlineColor: WidgetStateProperty.all(
+                    Colors.grey.shade300,
+                  ),
+                ),
                 showRightIcon: false,
                 onTap: null,
               ),
@@ -256,9 +282,11 @@ class SettingsScreen extends StatelessWidget {
               _SettingsTile(
                 icon: Iconsax.code,
                 title: 'App Version',
-                trailing: const Text(
+                trailing: Text(
                   'v1.0.0',
-                  style: TextStyle(color: Colors.black54),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
                 ),
                 showRightIcon: false,
                 onTap: null,
@@ -425,8 +453,19 @@ class _SettingsTile extends StatelessWidget {
 
 class _InteractiveSwitch extends StatefulWidget {
   final bool initialValue;
-  const _InteractiveSwitch({Key? key, required this.initialValue})
-    : super(key: key);
+  final Color? activeColor;
+  final Color? inactiveThumbColor;
+  final Color? activeTrackColor;
+  final Color? inactiveTrackColor;
+  final MaterialStateProperty<Color?>? trackOutlineColor;
+  const _InteractiveSwitch({
+    required this.initialValue,
+    this.activeColor,
+    this.inactiveThumbColor,
+    this.activeTrackColor,
+    this.inactiveTrackColor,
+    this.trackOutlineColor,
+  });
 
   @override
   State<_InteractiveSwitch> createState() => _InteractiveSwitchState();
@@ -443,6 +482,14 @@ class _InteractiveSwitchState extends State<_InteractiveSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    return Switch(value: value, onChanged: (v) => setState(() => value = v));
+    return Switch(
+      value: value,
+      onChanged: (v) => setState(() => value = v),
+      activeColor: widget.activeColor,
+      inactiveThumbColor: widget.inactiveThumbColor,
+      activeTrackColor: widget.activeTrackColor,
+      inactiveTrackColor: widget.inactiveTrackColor,
+      trackOutlineColor: widget.trackOutlineColor,
+    );
   }
 }
