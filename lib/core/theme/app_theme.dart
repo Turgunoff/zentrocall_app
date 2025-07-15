@@ -17,7 +17,9 @@ class AppTheme {
         onSurface: AppColors.lightOnSurface,
         onBackground: AppColors.lightOnBackground,
         error: AppColors.error,
+        // Add more color tuning if needed
       ),
+      scaffoldBackgroundColor: AppColors.lightBackground, // Ensure scaffold bg
       textTheme: GoogleFonts.interTextTheme(),
       appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.lightSurface,
@@ -32,6 +34,7 @@ class AppTheme {
           borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
       ),
+      dividerColor: AppColors.lightDivider,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
@@ -77,7 +80,9 @@ class AppTheme {
         onSurface: AppColors.darkOnSurface,
         onBackground: AppColors.darkOnBackground,
         error: AppColors.error,
+        // Add more color tuning if needed
       ),
+      scaffoldBackgroundColor: AppColors.darkBackground, // Ensure scaffold bg
       textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme),
       appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.darkSurface,
@@ -92,6 +97,7 @@ class AppTheme {
           borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
       ),
+      dividerColor: AppColors.darkDivider,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
@@ -124,4 +130,3 @@ class AppTheme {
     );
   }
 }
- 

@@ -20,8 +20,8 @@ class AppColors {
   static const Color dashboardActionBg = Color(0xFFEFF6FF);
 
   // Yorug' tema ranglari
-  static const Color lightBackground = Color(0xFFFAFAFA);
-  static const Color lightSurface = Color(0xFFFFFFFF);
+  static const Color lightBackground = Color(0xFFFFFFFF);
+  static const Color lightSurface = Color(0xFFFAFAFA);
   static const Color lightOnSurface = Color(0xFF212121);
   static const Color lightOnBackground = Color(0xFF424242);
   static const Color lightDivider = Color(0xFFE0E0E0);
