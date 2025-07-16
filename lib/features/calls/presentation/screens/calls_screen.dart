@@ -575,9 +575,9 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
       final reg = RegExp(country['pattern']!);
       final match = reg.firstMatch(_input);
       if (match != null) {
-        var formatted = country['format']!;
+        String formatted = country['format']!;
         for (int i = 1; i <= match.groupCount; i++) {
-          formatted = formatted.replaceAll(' 24$i', match.group(i)!);
+          formatted = formatted.replaceAll(' $i', match.group(i)!);
         }
         return formatted;
       }
