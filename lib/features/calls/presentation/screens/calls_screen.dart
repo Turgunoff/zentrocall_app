@@ -156,6 +156,7 @@ class _CallsScreenState extends State<CallsScreen> {
       appBar: AppBar(
         title: Text('Call History'),
         centerTitle: true,
+        surfaceTintColor: Colors.transparent,
         elevation: 0,
         actions: [
           IconButton(icon: const Icon(Iconsax.search_normal), onPressed: () {}),
@@ -444,7 +445,12 @@ class _CallsScreenState extends State<CallsScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF2563EB), // #2563EB as primary color
         onPressed: () {
-          // TODO: Implement new call action
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            builder: (ctx) => _ClassicDialerSheet(),
+          );
         },
         child: const Icon(Iconsax.call_add, color: Colors.white),
       ),
@@ -499,6 +505,291 @@ class _ActionButton extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// CLASSIC DIALER SHEET (screenshot style)
+class _ClassicDialerSheet extends StatefulWidget {
+  @override
+  State<_ClassicDialerSheet> createState() => _ClassicDialerSheetState();
+}
+
+class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
+  String _input = '';
+  final t9 = const {
+    '1': '',
+    '2': 'ABC',
+    '3': 'DEF',
+    '4': 'GHI',
+    '5': 'JKL',
+    '6': 'MNO',
+    '7': 'PQRS',
+    '8': 'TUV',
+    '9': 'WXYZ',
+    '*': '',
+    '0': '+',
+    '#': '',
+  };
+  final keys = const [
+    ['1', '2', '3'],
+    ['4', '5', '6'],
+    ['7', '8', '9'],
+    ['*', '0', '#'],
+  ];
+
+  // Country prefix map
+  final List<Map<String, dynamic>> _countryPrefixes = [
+    {
+      'prefix': '+7',
+      'name': 'Kazakhstan',
+      'pattern': r'^\+7(\d{3})(\d{3})(\d{2})(\d{2})$',
+      'format': r'+7 $1 $2 $3 $4',
+    },
+    {
+      'prefix': '+998',
+      'name': 'Uzbekistan',
+      'pattern': r'^\+998(\d{2})(\d{3})(\d{2})(\d{2})$',
+      'format': r'+998 $1 $2 $3 $4',
+    },
+    // Add more countries as needed
+  ];
+
+  Map<String, String>? get detectedCountry {
+    for (final c in _countryPrefixes) {
+      if (_input.startsWith(c['prefix'])) {
+        return {
+          'name': c['name'],
+          'pattern': c['pattern'],
+          'format': c['format'],
+        };
+      }
+    }
+    return null;
+  }
+
+  String get formattedInput {
+    final country = detectedCountry;
+    if (country != null) {
+      final reg = RegExp(country['pattern']!);
+      final match = reg.firstMatch(_input);
+      if (match != null) {
+        var formatted = country['format']!;
+        for (int i = 1; i <= match.groupCount; i++) {
+          formatted = formatted.replaceAll(' 24$i', match.group(i)!);
+        }
+        return formatted;
+      }
+    }
+    return _input;
+  }
+
+  String? get countryName => detectedCountry?['name'];
+
+  void _onKeyTap(String val) {
+    setState(() {
+      _input += val;
+    });
+  }
+
+  void _onKeyLongPress(String val) {
+    if (val == '0') {
+      setState(() {
+        _input += '+';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            const SizedBox(height: 66),
+            // Number display
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+              child: Center(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  reverse: true, // So the end of the text is visible
+                  child: Column(
+                    children: [
+                      Text(
+                        formattedInput.isEmpty ? '' : formattedInput,
+                        maxLines: 1,
+                        style: Theme.of(context).textTheme.displayLarge
+                            ?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                              letterSpacing: 1,
+                              wordSpacing: 1,
+                            ),
+                      ),
+                      if (countryName != null)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Text(
+                            countryName!,
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.color
+                                      ?.withOpacity(0.5),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            // New Contact
+            ListTile(
+              leading: Icon(Iconsax.profile_add, size: 28),
+              title: const Text('Yangi kontakt'),
+              onTap: () {},
+              contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+              minLeadingWidth: 0,
+            ),
+            // Add to Contact
+            ListTile(
+              leading: Icon(Iconsax.add_circle, size: 28),
+              title: const Text('Kontaktga qo‘shish'),
+              onTap: () {},
+              contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+              minLeadingWidth: 0,
+            ),
+            const SizedBox(height: 8),
+            // Dial pad
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ...keys.map(
+                    (row) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: row
+                            .map(
+                              (key) => _ClassicDialKey(
+                                label: key,
+                                t9: t9[key]!,
+                                onTap: () => _onKeyTap(key),
+                                onLongPress: () => _onKeyLongPress(key),
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  // Action row
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: 16,
+                      left: 24,
+                      right: 24,
+                      top: 8,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.dialpad, size: 32),
+                          onPressed: () {},
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                            shape: const CircleBorder(),
+                            padding: const EdgeInsets.all(22),
+                            elevation: 0,
+                          ),
+                          onPressed: _input.isNotEmpty ? () {} : null,
+                          child: const Icon(Icons.phone, size: 36),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.backspace_outlined, size: 32),
+                          onPressed: _input.isNotEmpty
+                              ? () => setState(
+                                  () => _input = _input.substring(
+                                    0,
+                                    _input.length - 1,
+                                  ),
+                                )
+                              : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ClassicDialKey extends StatelessWidget {
+  final String label;
+  final String t9;
+  final VoidCallback onTap;
+  final VoidCallback? onLongPress;
+  const _ClassicDialKey({
+    required this.label,
+    required this.t9,
+    required this.onTap,
+    this.onLongPress,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(32),
+        onTap: onTap,
+        onLongPress: onLongPress,
+        child: Container(
+          width: 72,
+          height: 72,
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                label,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 30,
+                ),
+              ),
+              if (t9.isNotEmpty)
+                Text(
+                  t9,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 13,
+                    color: Theme.of(
+                      context,
+                    ).textTheme.bodySmall?.color?.withOpacity(0.6),
+                  ),
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }

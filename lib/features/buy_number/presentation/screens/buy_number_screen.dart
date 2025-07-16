@@ -40,8 +40,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'us',
       'price': ' 41.5/mo',
       'features': ['Voice', 'SMS'],
-      'details':
-          'This number can be ported to another operator. No hidden fees.',
       'priceDetails': 'First month: \$1.5, then \$1.5/mo. No extra charges.',
     },
     {
@@ -49,7 +47,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'us',
       'price': ' 42.0/mo',
       'features': ['Voice'],
-      'details': 'New York number. Can be used for business.',
       'priceDetails': 'First month: \$2.0, then \$2.0/mo. No extra charges.',
     },
     // United Kingdom
@@ -58,7 +55,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'gb',
       'price': ' 41.8/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'London number. Can be ported.',
       'priceDetails': 'First month: \$1.8, then \$1.8/mo. No extra charges.',
     },
     // Canada
@@ -67,7 +63,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'ca',
       'price': ' 41.6/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Toronto number. No hidden fees.',
       'priceDetails': 'First month: \$1.6, then \$1.6/mo. No extra charges.',
     },
     // Germany
@@ -76,7 +71,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'de',
       'price': ' 42.2/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Berlin number. Can be ported.',
       'priceDetails': 'First month: \$2.2, then \$2.2/mo. No extra charges.',
     },
     // Uzbekistan
@@ -85,7 +79,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'uz',
       'price': ' 41.9/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Tashkent number. No hidden fees.',
       'priceDetails': 'First month: \$1.9, then \$1.9/mo. No extra charges.',
     },
     // France
@@ -94,7 +87,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'fr',
       'price': ' 42.1/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Paris number. Can be ported.',
       'priceDetails': 'First month: \$2.1, then \$2.1/mo. No extra charges.',
     },
     // Italy
@@ -103,7 +95,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'it',
       'price': ' 41.7/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Rome number. No hidden fees.',
       'priceDetails': 'First month: \$1.7, then \$1.7/mo. No extra charges.',
     },
     // Spain
@@ -112,7 +103,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'es',
       'price': ' 41.8/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Madrid number. Can be ported.',
       'priceDetails': 'First month: \$1.8, then \$1.8/mo. No extra charges.',
     },
     // Turkey
@@ -121,7 +111,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'tr',
       'price': ' 41.5/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Istanbul number. No hidden fees.',
       'priceDetails': 'First month: \$1.5, then \$1.5/mo. No extra charges.',
     },
     // Russia
@@ -130,7 +119,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'ru',
       'price': ' 42.0/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Moscow number. Can be ported.',
       'priceDetails': 'First month: \$2.0, then \$2.0/mo. No extra charges.',
     },
     // India
@@ -139,7 +127,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'in',
       'price': ' 41.3/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Mumbai number. No hidden fees.',
       'priceDetails': 'First month: \$1.3, then \$1.3/mo. No extra charges.',
     },
     // China
@@ -148,7 +135,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'cn',
       'price': ' 41.6/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Beijing number. Can be ported.',
       'priceDetails': 'First month: \$1.6, then \$1.6/mo. No extra charges.',
     },
     // Japan
@@ -157,7 +143,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'jp',
       'price': ' 42.3/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Tokyo number. No hidden fees.',
       'priceDetails': 'First month: \$2.3, then \$2.3/mo. No extra charges.',
     },
     // Brazil
@@ -166,7 +151,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'br',
       'price': ' 41.4/mo',
       'features': ['Voice'],
-      'details': 'São Paulo number. Can be ported.',
       'priceDetails': 'First month: \$1.4, then \$1.4/mo. No extra charges.',
     },
     // Australia
@@ -175,7 +159,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
       'country': 'au',
       'price': ' 41.9/mo',
       'features': ['Voice', 'SMS'],
-      'details': 'Sydney number. No hidden fees.',
       'priceDetails': 'First month: \$1.9, then \$1.9/mo. No extra charges.',
     },
   ];
@@ -217,74 +200,150 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
     int? selected = await showModalBottomSheet<int>(
       context: context,
       isScrollControlled: true,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
       builder: (ctx) {
         List<Map<String, String>> filtered = countries;
-        return StatefulBuilder(
-          builder: (context, setModalState) {
-            filtered = countries
-                .where(
-                  (c) =>
-                      c['name']!.toLowerCase().contains(search.toLowerCase()) ||
-                      c['code']!.contains(search),
-                )
-                .toList();
-            return Padding(
-              padding: MediaQuery.of(context).viewInsets,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                    child: TextField(
-                      autofocus: false,
-                      decoration: InputDecoration(
-                        hintText: 'Search country or code',
-                        prefixIcon: const Icon(Icons.search),
-                        filled: true,
-                        fillColor:
-                            Theme.of(context).inputDecorationTheme.fillColor ??
-                            Colors.grey.shade100,
-                        contentPadding: const EdgeInsets.symmetric(vertical: 0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
+        final double topPadding = MediaQuery.of(context).padding.top;
+        final double appBarHeight = kToolbarHeight;
+        final double maxHeight =
+            MediaQuery.of(context).size.height - topPadding - appBarHeight;
+        return DraggableScrollableSheet(
+          initialChildSize: 0.90,
+          minChildSize: 0.6,
+          maxChildSize: 0.90,
+          expand: false,
+          builder: (context, scrollController) {
+            return StatefulBuilder(
+              builder: (context, setModalState) {
+                filtered = countries
+                    .where(
+                      (c) =>
+                          c['name']!.toLowerCase().contains(
+                            search.toLowerCase(),
+                          ) ||
+                          c['code']!.contains(search),
+                    )
+                    .toList();
+                return Container(
+                  constraints: BoxConstraints(maxHeight: maxHeight),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                        child: TextField(
+                          autofocus: false,
+                          decoration: InputDecoration(
+                            hintText: 'Search country or code',
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: Theme.of(
+                                context,
+                              ).iconTheme.color?.withOpacity(0.7),
+                            ),
+                            filled: true,
+                            fillColor:
+                                Theme.of(
+                                  context,
+                                ).inputDecorationTheme.fillColor ??
+                                Theme.of(context).colorScheme.surface,
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 0,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                          onChanged: (val) => setModalState(() => search = val),
                         ),
                       ),
-                      onChanged: (val) => setModalState(() => search = val),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.public, color: Colors.grey),
-                    title: const Text('All countries'),
-                    onTap: () => Navigator.pop(ctx, null),
-                    selected: _selectedCountry == null,
-                  ),
-                  SizedBox(
-                    height: 320,
-                    child: ListView.separated(
-                      itemCount: filtered.length,
-                      separatorBuilder: (_, __) => const Divider(height: 0),
-                      itemBuilder: (ctx, i) => ListTile(
-                        leading: CountryFlag.fromCountryCode(
-                          filtered[i]['flag']!,
-                          height: 28,
-                          width: 28,
+                      ListTile(
+                        leading: Icon(
+                          Icons.public,
+                          color: Theme.of(
+                            context,
+                          ).iconTheme.color?.withOpacity(0.7),
                         ),
-                        title: Text(filtered[i]['name']!),
-                        subtitle: Text(filtered[i]['code']!),
-                        onTap: () =>
-                            Navigator.pop(ctx, countries.indexOf(filtered[i])),
-                        selected:
-                            countries.indexOf(filtered[i]) == _selectedCountry,
+                        title: const Text('All countries'),
+                        onTap: () => Navigator.pop(ctx, null),
+                        selected: _selectedCountry == null,
                       ),
-                    ),
+                      Expanded(
+                        child: ListView.separated(
+                          controller: scrollController,
+                          itemCount: filtered.length,
+                          separatorBuilder: (_, __) => Divider(
+                            height: 0,
+                            color: Theme.of(context).dividerColor,
+                          ),
+                          itemBuilder: (ctx, i) {
+                            final country = filtered[i];
+                            final isSelected =
+                                countries.indexOf(country) == _selectedCountry;
+                            return InkWell(
+                              onTap: () => Navigator.pop(
+                                ctx,
+                                countries.indexOf(country),
+                              ),
+                              child: Container(
+                                color: isSelected
+                                    ? Theme.of(
+                                        context,
+                                      ).colorScheme.primary.withOpacity(0.07)
+                                    : Colors.transparent,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 10,
+                                ),
+                                child: Row(
+                                  children: [
+                                    CountryFlag.fromCountryCode(
+                                      country['flag']!,
+                                      height: 28,
+                                      width: 28,
+                                      shape: Circle(),
+                                    ),
+                                    const SizedBox(width: 14),
+                                    Expanded(
+                                      child: Text(
+                                        country['name']!,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: Theme.of(
+                                            context,
+                                          ).textTheme.bodyLarge?.color,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      country['code']!,
+                                      style: TextStyle(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall
+                                            ?.color
+                                            ?.withOpacity(0.7),
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                    ],
                   ),
-                  const SizedBox(height: 16),
-                ],
-              ),
+                );
+              },
             );
           },
         );
@@ -301,13 +360,6 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
         centerTitle: true,
         elevation: 0,
         surfaceTintColor: Colors.transparent,
-        backgroundColor: Colors.white,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.filter_list_rounded),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Column(
         children: [
@@ -323,21 +375,25 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
                       countries[_selectedCountry!]['flag']!,
                       height: 28,
                       width: 28,
+                      shape: Circle(),
                     )
                   else
-                    const Icon(
+                    Icon(
                       Icons.flag_outlined,
                       size: 28,
-                      color: Colors.grey,
+                      color:
+                          Theme.of(context).iconTheme.color?.withOpacity(0.7) ??
+                          Colors.grey,
                     ),
                   const SizedBox(width: 8),
                   Text(
                     _selectedCountry != null
                         ? countries[_selectedCountry!]['name']!
                         : 'All countries',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
                     ),
                   ),
                   if (_selectedCountry != null) ...[
@@ -353,7 +409,11 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
                     ),
                   ],
                   const SizedBox(width: 4),
-                  const Icon(Icons.keyboard_arrow_down_rounded, size: 20),
+                  Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    size: 20,
+                    color: Theme.of(context).iconTheme.color?.withOpacity(0.7),
+                  ),
                 ],
               ),
             ),
@@ -364,11 +424,14 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search for a number (e.g. 555, 777)',
-                prefixIcon: const Icon(Icons.search),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).iconTheme.color?.withOpacity(0.7),
+                ),
                 filled: true,
                 fillColor:
                     Theme.of(context).inputDecorationTheme.fillColor ??
-                    Colors.grey.shade100,
+                    Theme.of(context).colorScheme.surface,
                 contentPadding: const EdgeInsets.symmetric(vertical: 0),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -418,13 +481,10 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.03),
-                            blurRadius: 8,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
+                        border: Border.all(
+                          color: Theme.of(context).dividerColor,
+                          width: 1.2,
+                        ),
                       ),
                       padding: const EdgeInsets.all(16),
                       child: Row(
@@ -445,51 +505,7 @@ class _BuyNumberScreenState extends State<BuyNumberScreen> {
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
-                                    const SizedBox(width: 6),
-                                    GestureDetector(
-                                      onTap: () {
-                                        showModalBottomSheet(
-                                          context: context,
-                                          shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.vertical(
-                                              top: Radius.circular(16),
-                                            ),
-                                          ),
-                                          builder: (ctx) => Padding(
-                                            padding: const EdgeInsets.all(20),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  item['number'],
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleMedium
-                                                      ?.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                ),
-                                                const SizedBox(height: 12),
-                                                Text(
-                                                  item['details'],
-                                                  style: Theme.of(
-                                                    context,
-                                                  ).textTheme.bodyMedium,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      child: Icon(
-                                        Icons.info_outline,
-                                        size: 18,
-                                        color: Colors.blue.shade300,
-                                      ),
-                                    ),
+                                    // Info icon removed
                                   ],
                                 ),
                                 const SizedBox(height: 8),
@@ -653,13 +669,19 @@ class _TypeChip extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 7),
         decoration: BoxDecoration(
-          color: selected ? Colors.blue : Colors.grey.shade200,
+          color: selected
+              ? Theme.of(context).colorScheme.primary
+              : Theme.of(context).colorScheme.surfaceVariant,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Text(
           label,
           style: TextStyle(
-            color: selected ? Colors.white : Colors.black54,
+            color: selected
+                ? Colors.white
+                : Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.color?.withOpacity(0.7),
             fontWeight: FontWeight.w500,
           ),
         ),
