@@ -1,6 +1,8 @@
+// Qo'ng'iroqlar tarixi ekrani (Call History Screen)
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+// Qo'ng'iroqlar tarixi ekrani uchun asosiy widget
 class CallsScreen extends StatefulWidget {
   const CallsScreen({super.key});
 
@@ -8,11 +10,14 @@ class CallsScreen extends StatefulWidget {
   State<CallsScreen> createState() => _CallsScreenState();
 }
 
+// Ekran holatini boshqaruvchi klass
 class _CallsScreenState extends State<CallsScreen> {
-  int _selectedFilter = 0; // 0: All, 1: Outgoing, 2: Incoming, 3: Missed
+  int _selectedFilter =
+      0; // 0: Hammasi, 1: Chiquvchi, 2: Kiruvchi, 3: O'tkazib yuborilgan
   final List<String> _filters = ['All', 'Outgoing', 'Incoming', 'Missed'];
-  int? _expandedIndex;
+  int? _expandedIndex; // Qaysi element kengayganini saqlaydi
 
+  // Qo'ng'iroqlar tarixi uchun namunaviy ma'lumotlar
   final List<_CallItem> callHistory = [
     _CallItem(
       name: 'John Doe',
@@ -137,6 +142,7 @@ class _CallsScreenState extends State<CallsScreen> {
     ),
   ];
 
+  // Foydalanuvchi tanlagan filtrga qarab, qo'ng'iroqlar ro'yxatini qaytaradi
   List<_CallItem> get _filteredCalls {
     switch (_selectedFilter) {
       case 1:
@@ -170,7 +176,8 @@ class _CallsScreenState extends State<CallsScreen> {
                 final isSelected = _selectedFilter == i;
                 return Expanded(
                   child: GestureDetector(
-                    onTap: () => setState(() => _selectedFilter = i),
+                    onTap: () =>
+                        setState(() => _selectedFilter = i), // Filtrni tanlash
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       decoration: BoxDecoration(
@@ -203,6 +210,7 @@ class _CallsScreenState extends State<CallsScreen> {
           ),
         ),
       ),
+      // Qo'ng'iroqlar ro'yxati
       body: ListView.separated(
         padding: const EdgeInsets.symmetric(vertical: 8),
         itemCount: _filteredCalls.length,
@@ -217,6 +225,7 @@ class _CallsScreenState extends State<CallsScreen> {
           final call = _filteredCalls[index];
           return Column(
             children: [
+              // Qo'ng'iroq elementi, bosilganda kengayadi, uzun bosilganda kontekst menyu chiqadi
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -224,6 +233,7 @@ class _CallsScreenState extends State<CallsScreen> {
                   });
                 },
                 onLongPressStart: (details) async {
+                  // Uzoq bosilganda kontekst menyu ko'rsatish
                   final selected = await showMenu<String>(
                     context: context,
                     position: RelativeRect.fromLTRB(
@@ -276,10 +286,11 @@ class _CallsScreenState extends State<CallsScreen> {
                     ],
                   );
 
+                  // Menyudan tanlangan amalni bajarish
                   if (selected == 'copy') {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Number copied: ${call.sourceNumber}'),
+                        content: Text('Number copied:  ${call.sourceNumber}'),
                       ),
                     );
                   } else if (selected == 'edit') {
@@ -350,6 +361,7 @@ class _CallsScreenState extends State<CallsScreen> {
                         ],
                       ),
                       const SizedBox(height: 2),
+                      // Manba raqami (virtual raqam)
                       Text(
                         call.sourceNumber,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -366,10 +378,10 @@ class _CallsScreenState extends State<CallsScreen> {
                       Iconsax.call,
                       color: const Color(
                         0xFF2563EB,
-                      ), // #2563EB as primary color
+                      ), // #2563EB asosiy rang sifatida
                     ),
                     onPressed: () {
-                      // TODO: Implement call action
+                      // TODO: Qo'ng'iroq qilish funksiyasini yozish
                     },
                   ),
                   contentPadding: const EdgeInsets.symmetric(
@@ -379,6 +391,7 @@ class _CallsScreenState extends State<CallsScreen> {
                   minLeadingWidth: 0,
                 ),
               ),
+              // Kengayadigan amal tugmalari (faqat bitta element ochiladi)
               AnimatedCrossFade(
                 firstChild: const SizedBox.shrink(),
                 secondChild: _expandedIndex == index
@@ -442,8 +455,9 @@ class _CallsScreenState extends State<CallsScreen> {
           );
         },
       ),
+      // Dialer ochuvchi FAB
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF2563EB), // #2563EB as primary color
+        backgroundColor: const Color(0xFF2563EB), // #2563EB asosiy rang
         onPressed: () {
           showModalBottomSheet(
             context: context,
@@ -458,13 +472,14 @@ class _CallsScreenState extends State<CallsScreen> {
   }
 }
 
+// Qo'ng'iroq tarixi elementi uchun model klass
 class _CallItem {
   final String name;
   final String time;
   final bool isMissed;
   final bool isOutgoing;
   final Widget? avatar;
-  final String sourceNumber; // e.g. 'Virtual #1'
+  final String sourceNumber; // Masalan, 'Virtual #1'
 
   _CallItem({
     required this.name,
@@ -476,7 +491,7 @@ class _CallItem {
   });
 }
 
-// Action button widget for expanded row
+// Kengayadigan amal tugmasi uchun widget
 class _ActionButton extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -510,14 +525,16 @@ class _ActionButton extends StatelessWidget {
   }
 }
 
-// CLASSIC DIALER SHEET (screenshot style)
+// Klassik dialer (raqam terish) oynasi uchun widget
 class _ClassicDialerSheet extends StatefulWidget {
   @override
   State<_ClassicDialerSheet> createState() => _ClassicDialerSheetState();
 }
 
+// Dialer oynasi holatini boshqaruvchi klass
 class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
   String _input = '';
+  // T9 harflari bilan raqamlar
   final t9 = const {
     '1': '',
     '2': 'ABC',
@@ -539,7 +556,7 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
     ['*', '0', '#'],
   ];
 
-  // Country prefix map
+  // Mamlakat kodlari va formatlari ro'yxati
   final List<Map<String, dynamic>> _countryPrefixes = [
     {
       'prefix': '+7',
@@ -553,9 +570,10 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
       'pattern': r'^\+998(\d{2})(\d{3})(\d{2})(\d{2})$',
       'format': r'+998 $1 $2 $3 $4',
     },
-    // Add more countries as needed
+    // Yangi mamlakatlar qo'shish mumkin
   ];
 
+  // Kiritilgan raqamdan mamlakatni aniqlash
   Map<String, String>? get detectedCountry {
     for (final c in _countryPrefixes) {
       if (_input.startsWith(c['prefix'])) {
@@ -569,6 +587,7 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
     return null;
   }
 
+  // Raqamni mamlakat formati bo'yicha chiqarish
   String get formattedInput {
     final country = detectedCountry;
     if (country != null) {
@@ -587,12 +606,14 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
 
   String? get countryName => detectedCountry?['name'];
 
+  // Raqam terish tugmasi bosilganda
   void _onKeyTap(String val) {
     setState(() {
       _input += val;
     });
   }
 
+  // 0 ni uzoq bosganda + qo'shish
   void _onKeyLongPress(String val) {
     if (val == '0') {
       setState(() {
@@ -610,13 +631,13 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
           mainAxisSize: MainAxisSize.max,
           children: [
             const SizedBox(height: 66),
-            // Number display
+            // Raqam ko'rsatish qismi
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
               child: Center(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  reverse: true, // So the end of the text is visible
+                  reverse: true, // Oxirgi raqam ko'rinib turadi
                   child: Column(
                     children: [
                       Text(
@@ -652,7 +673,7 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
               ),
             ),
             const SizedBox(height: 16),
-            // New Contact
+            // Yangi kontakt yaratish
             ListTile(
               leading: Icon(Iconsax.profile_add, size: 28),
               title: const Text('Yangi kontakt'),
@@ -660,7 +681,7 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
               contentPadding: const EdgeInsets.symmetric(horizontal: 24),
               minLeadingWidth: 0,
             ),
-            // Add to Contact
+            // Kontaktga qo'shish
             ListTile(
               leading: Icon(Iconsax.add_circle, size: 28),
               title: const Text('Kontaktga qo‘shish'),
@@ -669,7 +690,7 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
               minLeadingWidth: 0,
             ),
             const SizedBox(height: 8),
-            // Dial pad
+            // Dial pad (raqamli klaviatura)
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -693,7 +714,7 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  // Action row
+                  // Amal tugmalari qatori
                   Padding(
                     padding: const EdgeInsets.only(
                       bottom: 16,
@@ -742,6 +763,7 @@ class _ClassicDialerSheetState extends State<_ClassicDialerSheet> {
   }
 }
 
+// Dialer klaviaturasi uchun bitta tugma widgeti
 class _ClassicDialKey extends StatelessWidget {
   final String label;
   final String t9;
