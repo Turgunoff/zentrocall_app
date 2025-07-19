@@ -48,12 +48,6 @@ class AppRoutes {
       return MaterialPageRoute(builder: (_) => const ChatScreen());
     } else if (name == settings) {
       return MaterialPageRoute(builder: (_) => const SettingsScreen());
-    } else if (name == about) {
-      return MaterialPageRoute(builder: (_) => const AboutScreen());
-    } else if (name == help) {
-      return MaterialPageRoute(builder: (_) => const HelpScreen());
-    } else if (name == profile) {
-      return MaterialPageRoute(builder: (_) => const ProfileScreen());
     } else {
       return MaterialPageRoute(builder: (_) => const NotFoundScreen());
     }
@@ -174,27 +168,6 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       const Scaffold(body: Center(child: Text('Chat Screen')));
-}
-
-class AboutScreen extends StatelessWidget {
-  const AboutScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('About Screen')));
-}
-
-class HelpScreen extends StatelessWidget {
-  const HelpScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Help Screen')));
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Profile Screen')));
 }
 
 class NotFoundScreen extends StatelessWidget {
