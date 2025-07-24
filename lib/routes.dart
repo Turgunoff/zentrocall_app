@@ -1,3 +1,5 @@
+// Ilova uchun navigatsiya va marshrutizatsiya
+// Bu fayl barcha marshrutlar va ularning ekranga bog'lanishini boshqaradi
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:zentrocall_app/features/buy_number/presentation/screens/buy_number_screen.dart';
@@ -8,26 +10,28 @@ import 'package:zentrocall_app/features/auth/presentation/screens/login_screen.d
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zentrocall_app/features/settings/presentation/screens/settings_screen.dart';
 
-/// Ilova uchun navigatsiya va marshrutizatsiya
+/// AppRoutes klassi ilovadagi barcha marshrutlarni va ularning ekranga bog'lanishini boshqaradi
 class AppRoutes {
-  // Asosiy marshrutlar
-  static const String splash = '/';
-  static const String login = '/login';
-  static const String register = '/register';
-  static const String home = '/home';
-  static const String dashboard = '/dashboard';
-  static const String buyNumber = '/buy-number';
-  static const String calls = '/calls';
-  static const String chat = '/chat';
-  static const String settings = '/settings';
-  static const String about = '/about';
-  static const String help = '/help';
-  static const String profile = '/profile';
+  // Asosiy marshrutlar nomlari (string sifatida)
+  static const String splash = '/'; // Splash ekran
+  static const String login = '/login'; // Login ekran
+  static const String register = '/register'; // Ro'yxatdan o'tish ekran
+  static const String home = '/home'; // Asosiy (BottomNav) ekran
+  static const String dashboard = '/dashboard'; // Dashboard ekran
+  static const String buyNumber =
+      '/buy-number'; // Virtual raqam sotib olish ekran
+  static const String calls = '/calls'; // Qo'ng'iroqlar ekran
+  static const String chat = '/chat'; // Chat ekran
+  static const String settings = '/settings'; // Sozlamalar ekran
+  static const String about = '/about'; // Ilova haqida
+  static const String help = '/help'; // Yordam
+  static const String profile = '/profile'; // Profil
 
-  /// Asosiy navigatsiya konfiguratsiyasi
+  /// Marshrut nomiga qarab kerakli ekranni ochib beradi
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final name = settings.name;
 
+    // Har bir marshrut uchun mos ekranni qaytaradi
     if (name == splash) {
       return MaterialPageRoute(builder: (_) => const SplashScreen());
     } else if (name == '/onboarding') {
@@ -49,11 +53,12 @@ class AppRoutes {
     } else if (name == settings) {
       return MaterialPageRoute(builder: (_) => const SettingsScreen());
     } else {
+      // Agar marshrut topilmasa, xatolik ekrani
       return MaterialPageRoute(builder: (_) => const NotFoundScreen());
     }
   }
 
-  /// Xatolik sahifasi
+  /// Xatolik sahifasi (404 - topilmadi)
   static Widget _buildNotFoundScreen() {
     return Scaffold(
       appBar: AppBar(title: const Text('Sahifa topilmadi')),
@@ -62,7 +67,7 @@ class AppRoutes {
   }
 }
 
-/// Splash Screen
+/// SplashScreen - Ilova yuklanishida birinchi ko'rsatiladigan ekran
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -74,9 +79,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigate();
+    _navigate(); // Ilovani boshlashda navigatsiya
   }
 
+  /// 2 soniya kutib, onboarding ko'rilganmi yo'qmi tekshiradi va mos ekranga yo'naltiradi
   Future<void> _navigate() async {
     await Future.delayed(const Duration(seconds: 2));
     final prefs = await SharedPreferences.getInstance();
@@ -101,7 +107,7 @@ class _SplashScreenState extends State<SplashScreen> {
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 24),
-            const CircularProgressIndicator(),
+            const CircularProgressIndicator(), // Yuklanish indikator
           ],
         ),
       ),
@@ -109,7 +115,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-/// Asosiy sahifa (Bottom Navigation Bar bilan)
+/// HomeScreen - Asosiy sahifa (Bottom Navigation Bar bilan)
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -118,8 +124,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
+  int _currentIndex = 0; // Hozirgi tanlangan tab
 
+  // Har bir tab uchun ekranning ro'yxati
   final List<Widget> _screens = [
     const DashboardScreen(),
     const BuyNumberScreen(),
@@ -136,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            _currentIndex = index; // Tab o'zgarganda indexni yangilash
           });
         },
         items: const [
@@ -156,6 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+/// RegisterScreen - Ro'yxatdan o'tish ekrani (hozircha oddiy matn)
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
   @override
@@ -163,6 +171,7 @@ class RegisterScreen extends StatelessWidget {
       const Scaffold(body: Center(child: Text('Register Screen')));
 }
 
+/// ChatScreen - Chat ekrani (hozircha oddiy matn)
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
   @override
@@ -170,6 +179,7 @@ class ChatScreen extends StatelessWidget {
       const Scaffold(body: Center(child: Text('Chat Screen')));
 }
 
+/// NotFoundScreen - Topilmagan sahifa uchun ekran
 class NotFoundScreen extends StatelessWidget {
   const NotFoundScreen({super.key});
   @override
